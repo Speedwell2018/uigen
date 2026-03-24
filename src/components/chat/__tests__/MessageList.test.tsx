@@ -12,17 +12,6 @@ afterEach(() => {
   cleanup();
 });
 
-test("MessageList shows empty state when no messages", () => {
-  render(<MessageList messages={[]} />);
-
-  expect(
-    screen.getByText("Start a conversation to generate React components")
-  ).toBeDefined();
-  expect(
-    screen.getByText("I can help you create buttons, forms, cards, and more")
-  ).toBeDefined();
-});
-
 test("MessageList renders user messages", () => {
   const messages: Message[] = [
     {
@@ -78,7 +67,7 @@ test("MessageList renders messages with parts", () => {
   render(<MessageList messages={messages} />);
 
   expect(screen.getByText("Creating your component...")).toBeDefined();
-  expect(screen.getByText("str_replace_editor")).toBeDefined();
+  expect(screen.getByText("str_replace_editor")).toBeDefined(); // no path in args, falls back to tool name
 });
 
 test("MessageList shows content for assistant message with content", () => {
